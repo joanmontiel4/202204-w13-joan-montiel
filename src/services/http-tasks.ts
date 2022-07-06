@@ -1,6 +1,6 @@
 import { iTask } from '../models/tasks';
 
-const url = 'http://localhost:3545/tasks/';
+const url = 'http://localhost:3542/tasks/';
 
 export function getAllTasks(): Promise<Array<iTask>> {
     return fetch(url).then((resp) => resp.json());

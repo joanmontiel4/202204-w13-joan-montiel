@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { TodoProvider } from '../../context/todo.provider';
 // import { TodoProvider } from '../../context/todo.provider';
 import { menuOptionsType } from '../../interfaces/menuoptions';
 
@@ -19,37 +20,44 @@ function App() {
     ];
 
     return (
-        // <TodoProvider>
-        <Layout appTitle={appTitle} company={company} menuOptions={menuOptions}>
-            <Routes>
-                <Route
-                    path=""
-                    element={
-                        <React.Suspense>
-                            <Home />
-                        </React.Suspense>
-                    }
-                ></Route>
-                <Route
-                    path="tasks"
-                    element={
-                        <React.Suspense>
-                            <Todo />
-                        </React.Suspense>
-                    }
-                ></Route>
-                <Route
-                    path="about"
-                    element={
-                        <React.Suspense>
-                            <About />
-                        </React.Suspense>
-                    }
-                ></Route>
-                <Route path="*" element={<Navigate replace to="" />}></Route>
-            </Routes>
-        </Layout>
-        // </TodoProvider>
+        <TodoProvider>
+            <Layout
+                appTitle={appTitle}
+                company={company}
+                menuOptions={menuOptions}
+            >
+                <Routes>
+                    <Route
+                        path=""
+                        element={
+                            <React.Suspense>
+                                <Home />
+                            </React.Suspense>
+                        }
+                    ></Route>
+                    <Route
+                        path="tasks"
+                        element={
+                            <React.Suspense>
+                                <Todo />
+                            </React.Suspense>
+                        }
+                    ></Route>
+                    <Route
+                        path="about"
+                        element={
+                            <React.Suspense>
+                                <About />
+                            </React.Suspense>
+                        }
+                    ></Route>
+                    <Route
+                        path="*"
+                        element={<Navigate replace to="" />}
+                    ></Route>
+                </Routes>
+            </Layout>
+        </TodoProvider>
     );
 }
 

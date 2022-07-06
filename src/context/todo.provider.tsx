@@ -15,7 +15,7 @@ export function TodoProvider({ children }: { children: JSX.Element }) {
     useEffect(() => {
         setLoading(true);
         api.getAllTasks().then((data) => {
-            dispatch(act.loadTasksAction(tasks));
+            dispatch(act.loadTasksAction(data));
         });
         setLoading(false);
     }, []);
